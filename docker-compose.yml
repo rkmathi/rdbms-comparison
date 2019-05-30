@@ -1,19 +1,32 @@
 version: '3.2'
 
 services:
-  mysql:
-    image: mysql:8.0.16
-    container_name: mysql
+  # mysql:
+  #   image: mysql:8.0.16
+  #   container_name: mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: comp_db
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: pass
+  #     TZ: 'Asia/Tokyo'
+  #   command: mysqld
+  #   volumes:
+  #   - ./docker/mysql/data:/var/lib/mysql
+  #   - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+  #   - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+  #   ports:
+  #   - 13306:3306
+  postgres:
+    image: postgres:11.3
+    container_name: postgres
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: comp_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
       TZ: 'Asia/Tokyo'
-    command: mysqld
+    command: postgres
     volumes:
-    - ./docker/mysql/data:/var/lib/mysql
-    - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-    - ./docker/mysql/initdb.d:/docker-entry-point-initdb.d
+    - ./docker/postgres/data:/var/lib/postgresql/data
+    - ./docker/postgres/initdb.d:/docker-entrypoint-initdb.d
     ports:
-    - 13306:3306
+    - 15432:5432

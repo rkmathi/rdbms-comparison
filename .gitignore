@@ -1,2 +1,4 @@
 /docker/mysql/data
 /docker/mysql/initdb.d/1-insert-data.sql
+/docker/postgres/data
+/docker/postgres/initdb.d/1-insert-data.sql
