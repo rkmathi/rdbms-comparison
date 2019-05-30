@@ -1,0 +1,19 @@
+version: '3.2'
+
+services:
+  mysql:
+    image: mysql:8.0.16
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: comp_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      TZ: 'Asia/Tokyo'
+    command: mysqld
+    volumes:
+    - ./docker/mysql/data:/var/lib/mysql
+    - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    - ./docker/mysql/initdb.d:/docker-entry-point-initdb.d
+    ports:
+    - 13306:3306
